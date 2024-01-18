@@ -132,7 +132,36 @@ def faster_fibonacci(n):
         for _  in range(2,n+1):
             a,b = b, a + b
         return b
- 
 
+import math as m
 
-print(fibonacci(15))
+def findNumber(steps, i, j):
+    interval = abs(i - j)
+    smallest = m.inf
+    smallest_num = -1
+    for x in range(steps):
+        num = i + x*(interval/steps)
+
+        left = num
+        right = 8*m.log2(num)
+
+        sub = abs(left - right)
+        if sub < smallest:
+            smallest = sub
+            smallest_num = num
+    return smallest_num
+
+def find_root(fun, a, b):
+    minimum = a 
+    maximum = b 
+    while abs(minimum - maximum) > 1e-8:
+        mid = (maximum + minimum)/2
+        res = fun(mid)
+        if (res * fun(minimum) > 0):
+            minimum = mid
+        else:
+            maximum = mid 
+    return minimum 
+                    
+#print(findNumber(1000,.001,10000))
+#print(find_root(lambda x: x - 8 * m.log2(x), 10, 100))
