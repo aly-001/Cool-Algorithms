@@ -118,7 +118,12 @@ def binary_search(L, a):
             L = L[m:]
     return L[0]
 
-B = [2, 4, 6, 3, 5, 7]
-C = [1, 4, 5, 7, 2, 4, 6, 8]
+def fibonacci(n):
+    if n == 0: return 0
+    elif n == 1: return 1
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+    
 
-print(recursive_insertion_sort(C))
+
+print(fibonacci(0))
