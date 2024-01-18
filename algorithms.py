@@ -151,7 +151,7 @@ def findNumber(steps, i, j):
             smallest_num = num
     return smallest_num
 
-def find_root(fun, a, b):
+def find_root(fun, a, b): # binary search, uses positive/negative as check
     minimum = a 
     maximum = b 
     while abs(minimum - maximum) > 1e-8:
