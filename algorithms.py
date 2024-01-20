@@ -161,7 +161,4 @@ def find_root(fun, a, b): # binary search, uses positive/negative as check
             minimum = mid
         else:
             maximum = mid 
-    return minimum 
-                    
-#print(findNumber(1000,.001,10000))
-#print(find_root(lambda x: x - 8 * m.log2(x), 10, 100))
+    return minimum
