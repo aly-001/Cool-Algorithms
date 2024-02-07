@@ -11,8 +11,6 @@ def getMaxAdditionalDinersCount(N, K, M, S) -> int:
         total += max((distance - K)//(K+1), 0)
     return total 
 
-
-
 N = 10
 K = 1
 M = 2

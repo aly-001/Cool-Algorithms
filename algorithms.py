@@ -162,3 +162,102 @@ def find_root(fun, a, b): # binary search, uses positive/negative as check
         else:
             maximum = mid 
     return minimum
+
+
+def med_five_elements(A):
+    A = sorted(A)
+    return A[2]
+
+def median(A):
+    if len(A) == 5:
+        return med_five_elements(A)
+    else:
+        new_medians = []
+        for i in range(int(len(A)/5)):
+            new_medians.append(med_five_elements(A[5*i:5*(i+1)]))
+        return median(new_medians)
+
+def merge_sort2(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2  # Finding the mid of the array
+        L = arr[:mid]  # Dividing the array elements into 2 halves
+        R = arr[mid:]
+
+        merge_sort2(L)  # Sorting the first half
+        merge_sort2(R)  # Sorting the second half
+
+        merge2(arr, L, R)
+
+def merge2(arr, L, R):
+    i = j = k = 0
+
+    # Merging the temp arrays back into arr
+    while i < len(L) and j < len(R):
+        if L[i] < R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+        k += 1
+
+    # Checking if any element was left
+    while i < len(L):
+        arr[k] = L[i]
+        i += 1
+        k += 1
+
+    while j < len(R):
+        arr[k] = R[j]
+        j += 1
+        k += 1
+
+def printFun(test):
+ 
+    if (test < 1):
+        return
+    else:
+ 
+        print(test, end=" ")
+        printFun(test-1)  # statement 2
+        print(test, end=" ")
+        return
+ 
+def fun(n):
+    if n > 0: 
+        fun(n-1)
+        print(n)
+
+def get_binary_ones(n):
+    A = []
+    A.append(0)
+    A.append(1)
+    counter = 2
+    for i in range(2,n+1):
+        if i % counter == 0:
+            counter = i
+        A.append(A[i - counter] + 1)
+    return(A)
+
+def binomial_coefficient(n, k):
+    # Base cases
+    if k == 0 or k == n:
+        return 1
+    # Recursive step
+    else:
+        return binomial_coefficient(n-1, k-1) + binomial_coefficient(n-1, k)
+    
+def binomial_coefficient_dynamic(N, K):
+    C = [[0 for _ in range(K+1)] for _ in range(N+1)]
+    
+    for n in range(N+1):
+        for k in range(K+1):
+            if k == 0 or k == n:
+                C[n][k] = 1
+            else:
+                C[n][k] = C[n-1][k-1] + C[n-1][k]
+    return C[N][K]
+
+N = 5
+K = 2
+print(f"Binomial Coefficient of ({N}, {K}) is: {binomial_coefficient_dynamic(N, K)}")
